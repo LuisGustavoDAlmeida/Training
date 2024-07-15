@@ -1,0 +1,20 @@
+name: Countinuos Integration
+
+on: commit
+
+jobs: 
+  continuos-integration:
+    runs-on: ubuntu-latest
+
+  steps:
+    - uses: actions/checkout@v3 # Faz um gitclone na VM
+    - name: using-Node.js # Nome do Job
+      uses: actions/setup-node@v2 # Instala o Node
+      with: # Argumentos para o uses acima
+        node-version: 20. # Instalar o node 20 e as minor versions não importam
+    - name: run install, build and test
+      run: |
+        npm install
+        npm run build
+        npm run test
+
